@@ -1,5 +1,5 @@
 # History Configuration
-export HISTFILE="$ZDOTDIR/.history"
+export HISTFILE="${ZDOTDIR}/.history"
 export HISTSIZE=25000         # How many lines of history to keep in memory
 export SAVEHIST=25000         # How many lines of history to save to disk
 export HISTTIMEFORMAT="%S "   # Format history timestamps as 'YYYY-MM-DD HH:MM:SS'

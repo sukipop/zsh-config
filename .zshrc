@@ -28,7 +28,7 @@ function source_config_dir {
     files=("${dir}"/*)
 
     # Only proceed if there are files to source
-    if [[ -n ${files[1]} ]]; then
+    if [[ -n "${files[1]}" ]]; then
         for file in "${files[@]}"; do
             if [[ -r "$file" && -f "$file" ]]; then
                 . "$file"
@@ -42,23 +42,16 @@ function source_config_dir {
 
 # Add user-specific bins to PATH if they exist
 for dir in "$HOME/bin" "$HOME/.local/bin"; do
-    [[ -d "$dir" ]] && export PATH="$dir:$PATH"
+    if [[ -d "$dir" ]]; then
+        export PATH="$dir:$PATH"
+    fi
 done
 
 # Source files from various directories
 if [[ -d "$ZDOTDIR/profile" ]]; then
     source_config_dir "$ZDOTDIR/profile"
 fi
-if [[ -d "$ZDOTDIR/functions" ]]; then
-    source_config_dir "$ZDOTDIR/functions"
-fi
-export ZSH_ALIAS_DIR="$ZDOTDIR/aliases"
-if [[ -d "$ZSH_ALIAS_DIR" ]]; then
-    source_config_dir "$ZSH_ALIAS_DIR"
-fi
-if [[ -d "$ZDOTDIR/variables" ]]; then
-    source_config_dir "$ZDOTDIR/variables"
-fi
 
 # Clean up
 unfunction source_config_dir
+unset dir file

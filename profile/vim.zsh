@@ -1,0 +1,1 @@
+export VIMINFO='~/.config/viminfo'

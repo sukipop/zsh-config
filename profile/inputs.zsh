@@ -13,5 +13,5 @@ bindkey '^[[6~' scroll-down-command  # Page Down
 
 bindkey '^X^E' exit-shell-widget
 
-# Swap '€' '$' because my thumbs move so fast
+# Swap '€' for '$' because my thumbs move so fast
 bindkey -s '€' '$'
