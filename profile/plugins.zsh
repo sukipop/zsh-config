@@ -1,8 +1,12 @@
-# Define ZSH_PLUGIN_DIR
 export ZSH_PLUGIN_DIR="${ZDOTDIR}/plugins"
 
-# Ensure plugins directory exists
-mkdir -p "${ZSH_PLUGIN_DIR}"
+# Check if 'ZSH_PLUGIN_DIR' exists
+if [[ ! -d "$ZSH_PLUGIN_DIR" ]]; then
+    return 0
+fi
+
+# List directories in 'ZSH_PLUGIN_DIR'
+dirs=("${ZSH_FUNCTION_DIR}"/*)
 
 # Load plugins from the plugins directory
 for dir in "${ZSH_PLUGIN_DIR}"/*; do
@@ -13,3 +17,6 @@ for dir in "${ZSH_PLUGIN_DIR}"/*; do
         fi
     fi
 done
+
+# Clean up
+unset dir dirs file
